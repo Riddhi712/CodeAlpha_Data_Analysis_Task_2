@@ -332,6 +332,13 @@ plt.savefig('Advanced segment analysis.png', dpi=300, bbox_inches='tight')
 | **Right-Skewed Costs** | Low | Skewness = 0.858 | Apply log transformation for regression |
 | **BMI Boundaries** | Low | Hard limits at 16.0 and 45.0 | Verify against clinical standards |
 | **Zero Inflation** | Low | 49.8% zero chronic diseases | Legitimate — use zero-inflated models if needed |
+## Images
+### Distribution Charts
+<img src="https://raw.githubusercontent.com/Riddhi712/CodeAlpha_Data_Analysis_Task_2/main/Distribution%20Charts.png" alt="Distribution Charts" width="600">
+### Advanced Segment Analysis
+<img src="https://raw.githubusercontent.com/Riddhi712/CodeAlpha_Data_Analysis_Task_2/main/Advanced%20segment%20analysis.png" alt="Advanced Segment Analysis" width="700">
+### Correlation analysis
+<img src="https://raw.githubusercontent.com/Riddhi712/CodeAlpha_Data_Analysis_Task_2/main/Correlation%20Analysis%20and%20Bivariate%20Matrix.png" alt="Correlation Analysis and Bivariate Matrix" width="700">
 
 ### Data Validation Checks
 
