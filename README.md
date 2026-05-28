@@ -18,12 +18,10 @@
   - [Correlation & Bivariate Analysis](#2-correlation-analysis--bivariate-matrix)
   - [Advanced Segment Analysis](#3-advanced-segment-analysis)
 - [Key Findings](#key-findings)
-- [Installation](#installation)
 - [Usage](#usage)
 - [Statistical Insights](#statistical-insights)
 - [Data Quality](#data-quality)
-- [Contributing](#contributing)
-- [License](#license)
+- [Author](#Author)
 
 ---
 
@@ -219,6 +217,14 @@ scipy>=1.7.0
 | **Right-Skewed Costs** | Low | Skewness = 0.858 | Apply log transformation for regression |
 | **BMI Boundaries** | Low | Hard limits at 16.0 and 45.0 | Verify against clinical standards |
 | **Zero Inflation** | Low | 49.8% zero chronic diseases | Legitimate — use zero-inflated models if needed |
+
+---
+## Author
+
+**Shreya Tarafdar**
+
+[![GitHub](https://img.shields.io/badge/GitHub-Profile-black?logo=github)](https://github.com/Riddhi712)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Profile-blue?logo=linkedin)](https://www.linkedin.com/in/shreya-tarafdar-726b7430a/)
 
 
 ---
