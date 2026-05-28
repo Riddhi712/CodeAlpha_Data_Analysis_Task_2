@@ -170,7 +170,7 @@ This project delivers a comprehensive exploratory data analysis (EDA) of a medic
 ---
 
 
-### requirements.txt
+## Requirements.txt
 ```
 pandas>=1.3.0
 numpy>=1.21.0
@@ -220,8 +220,5 @@ scipy>=1.7.0
 | **BMI Boundaries** | Low | Hard limits at 16.0 and 45.0 | Verify against clinical standards |
 | **Zero Inflation** | Low | 49.8% zero chronic diseases | Legitimate — use zero-inflated models if needed |
 
-
-
-```
 
 ---
