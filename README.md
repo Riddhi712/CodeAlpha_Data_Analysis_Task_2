@@ -169,26 +169,6 @@ This project delivers a comprehensive exploratory data analysis (EDA) of a medic
 
 ---
 
-## Installation
-
-### Prerequisites
-- Python 3.8 or higher
-- pip package manager
-
-### Setup
-
-```bash
-# Clone the repository
-git clone https://github.com/yourusername/medical-insurance-analysis.git
-cd medical-insurance-analysis
-
-# Create virtual environment (recommended)
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\\Scripts\\activate
-
-# Install dependencies
-pip install -r requirements.txt
-```
 
 ### requirements.txt
 ```
@@ -203,99 +183,6 @@ scipy>=1.7.0
 
 ## Usage
 
-### Quick Start — Run Full Analysis
-
-```bash
-# Run the complete analysis pipeline
-python analysis.py
-```
-
-### Step-by-Step Usage
-
-```python
-import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
-from scipy import stats
-
-# 1. Load dataset
-df = pd.read_csv('medical_insurance_cost_dataset.csv')
-
-# 2. Basic exploration
-print(f"Dataset shape: {df.shape}")
-print(df.describe())
-
-# 3. Key analysis: Smoking impact
-smoker_costs = df.groupby('smoker')['annual_medical_cost_usd'].agg(['mean', 'median', 'std'])
-print("\\nCost by Smoking Status:")
-print(smoker_costs)
-
-# 4. Statistical test
-t_stat, p_value = stats.ttest_ind(
-    df[df['smoker'] == 'Yes']['annual_medical_cost_usd'],
-    df[df['smoker'] == 'No']['annual_medical_cost_usd']
-)
-print(f"\\nT-test: t={t_stat:.3f}, p={p_value:.2e}")
-print(f"Result: {'SIGNIFICANT' if p_value < 0.05 else 'Not significant'}")
-
-# 5. Correlation analysis
-correlation_matrix = df[['age', 'bmi', 'chronic_diseases', 
-                         'doctor_visits_per_year', 'annual_medical_cost_usd']].corr()
-print("\\nCorrelation with Medical Cost:")
-print(correlation_matrix['annual_medical_cost_usd'].sort_values(ascending=False))
-
-# 6. Generate distribution chart
-plt.figure(figsize=(10, 6))
-plt.hist(df['annual_medical_cost_usd'], bins=50, color='steelblue', alpha=0.7, edgecolor='black')
-plt.axvline(df['annual_medical_cost_usd'].mean(), color='red', linestyle='--', 
-            label=f'Mean: ${df["annual_medical_cost_usd"].mean():.0f}')
-plt.axvline(df['annual_medical_cost_usd'].median(), color='gold', linestyle='--', 
-            label=f'Median: ${df["annual_medical_cost_usd"].median():.0f}')
-plt.title('Medical Cost Distribution')
-plt.xlabel('Annual Medical Cost ($)')
-plt.ylabel('Frequency')
-plt.legend()
-plt.savefig('cost_distribution.png', dpi=150, bbox_inches='tight')
-plt.show()
-```
-
-### Google Colab Integration
-
-```python
-# Mount Google Drive in Colab
-from google.colab import drive
-drive.mount('/content/drive')
-
-# Copy dataset from Drive
-df = pd.read_csv('/content/drive/MyDrive/medical_insurance_cost_dataset.csv')
-
-# Install dependencies if needed
-!pip install seaborn scipy
-
-# Run analysis
-exec(open('analysis.py').read())
-```
-
-### Generate Specific Visualizations
-
-```python
-# Generate all three visualization panels
-from analysis import create_distribution_charts, create_correlation_matrix, create_segment_analysis
-
-# Panel 1: Distributions
-create_distribution_charts(df)
-plt.savefig('Distribution Charts.png', dpi=300, bbox_inches='tight')
-
-# Panel 2: Correlations
-create_correlation_matrix(df)
-plt.savefig('Correlation Analysis and Bivariate Matrix.png', dpi=300, bbox_inches='tight')
-
-# Panel 3: Segments
-create_segment_analysis(df)
-plt.savefig('Advanced segment analysis.png', dpi=300, bbox_inches='tight')
-```
-
----
 
 ## Statistical Insights
 
@@ -335,35 +222,6 @@ plt.savefig('Advanced segment analysis.png', dpi=300, bbox_inches='tight')
 
 
 
-
-### Data Validation Checks
-
-```python
-# Run these checks before analysis
-
-def validate_dataset(df):
-    \"\"\"Run comprehensive data quality checks.\"\"\"
-    checks = {
-        'missing_values': df.isnull().sum().sum() == 0,
-        'duplicates': df.duplicated().sum() == 0,
-        'age_range': df['age'].between(18, 65).all(),
-        'bmi_range': df['bmi'].between(16, 45).all(),
-        'income_floor': (df['annual_income_usd'] == 18000).sum(),
-        'cost_positive': (df['annual_medical_cost_usd'] > 0).all(),
-        'smoker_binary': df['smoker'].isin(['Yes', 'No']).all(),
-        'plans_valid': df['insurance_plan'].isin(['Basic', 'Standard', 'Gold', 'Premium']).all()
-    }
-    
-    print("Data Validation Results:")
-    for check, result in checks.items():
-        status = "✅ PASS" if (result is True or isinstance(result, int)) else "❌ FAIL"
-        print(f"  {check}: {status}" + (f" ({result} floor records)" if isinstance(result, int) else ""))
-    
-    return all(v is True for v in checks.values() if not isinstance(v, int))
-
-# Usage
-is_valid = validate_dataset(df)
-print(f"\\nDataset is {'VALID' if is_valid else 'INVALID'} for analysis")
 ```
 
 ---
